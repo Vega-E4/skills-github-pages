@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Presentación Detallada: Tipos de Adverbios</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f0f4f8;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start; /* Alinea arriba para ver todo si es largo */
+            min-height: 100vh;
+            padding: 30px 20px; /* Más padding vertical */
+            box-sizing: border-box;
+        }
+
+        .presentation-container {
+            background-color: #ffffff;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12); /* Sombra un poco más definida */
+            overflow: hidden;
+            max-width: 950px; /* Un poco más ancho para acomodar info */
+            width: 100%;
+            margin: 20px 0; /* Margen superior/inferior */
+        }
+
+        header {
+            background: linear-gradient(135deg, #4a90e2, #50e3c2);
+            color: white;
+            padding: 30px 35px;
+            text-align: center;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.4em;
+            font-weight: 700;
+        }
+
+        .intro {
+            padding: 25px 35px;
+            font-size: 1.1em;
+            text-align: left; /* Alinear a la izquierda para más texto */
+            color: #444;
+            border-bottom: 1px solid #eee;
+        }
+        .intro p { margin-bottom: 10px; }
+        .intro strong { color: #4a90e2; }
+        .intro code { background-color: #eef; padding: 2px 5px; border-radius: 4px; font-family: monospace; }
+
+        .adverb-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            padding: 35px;
+        }
+
+        .adverb-card {
+            background-color: #fdfdfd; /* Casi blanco */
+            border-radius: 10px;
+            padding: 25px;
+            border-left: 6px solid;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.05); /* Sombra inicial ligera */
+        }
+
+        .adverb-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .adverb-card h2 {
+            margin-top: 0;
+            margin-bottom: 18px; /* Más espacio */
+            font-size: 1.6em;
+            font-weight: 600;
+            color: #2c3e50; /* Azul oscuro */
+            border-bottom: 2px solid;
+            padding-bottom: 8px; /* Más padding */
+        }
+
+        .adverb-card p {
+            margin-bottom: 12px;
+            line-height: 1.7; /* Un poco más de espacio entre líneas */
+            font-size: 1em;
+        }
+        .adverb-card ul { /* Estilo para listas */
+            margin-top: 10px;
+            padding-left: 25px;
+            list-style: disc;
+        }
+        .adverb-card li { margin-bottom: 5px; }
+
+        .highlight {
+            font-weight: 600;
+            color: #d35400; /* Naranja más oscuro */
+        }
+
+        .question-block { /* Bloque para la pregunta/función */
+             background-color: #eaf2f8;
+             border: 1px solid #c5d9e8;
+             padding: 10px 15px;
+             border-radius: 6px;
+             margin-top: 15px;
+             font-size: 0.95em;
+        }
+
+        .question-block strong {
+            color: #2980b9; /* Azul */
+            font-weight: 700;
+        }
+        .question-block em { /* Para las preguntas literales */
+            font-style: italic;
+            font-weight: 600;
+            color: #16a085; /* Verde azulado */
+        }
+
+        .example {
+            font-style: italic;
+            color: #555;
+            display: block; /* Hace que el ejemplo ocupe su línea */
+            margin-top: 10px;
+            font-size: 0.95em;
+        }
+        .example code { /* Destacar el adverbio en el ejemplo */
+            font-style: normal;
+            font-weight: bold;
+            color: #c0392b; /* Rojo oscuro */
+            background-color: transparent;
+            padding: 0;
+        }
+
+        /* Colores específicos (los mismos para consistencia) */
+        .modo { border-color: #3498db; } .modo h2 { border-bottom-color: #3498db; }
+        .tiempo { border-color: #f1c40f; } .tiempo h2 { border-bottom-color: #f1c40f; }
+        .lugar { border-color: #2ecc71; } .lugar h2 { border-bottom-color: #2ecc71; }
+        .cantidad { border-color: #e74c3c; } .cantidad h2 { border-bottom-color: #e74c3c; }
+        .afirmacion { border-color: #9b59b6; } .afirmacion h2 { border-bottom-color: #9b59b6; }
+        .negacion { border-color: #34495e; } .negacion h2 { border-bottom-color: #34495e; }
+        .duda { border-color: #e67e22; } .duda h2 { border-bottom-color: #e67e22; }
+        .locuciones { border-color: #1abc9c; } .locuciones h2 { border-bottom-color: #1abc9c; } /* Verde azulado para locuciones */
+
+        /* Sección de Locuciones (puede ir en el grid o fuera) */
+        .adverbial-phrases-section {
+             padding: 35px;
+             background-color: #e8f6f3; /* Fondo diferente para destacarlo */
+             margin-top: 20px; /* Separarlo del grid si va fuera */
+        }
+        .adverbial-phrases-section h2 {
+             color: #16a085; /* Color que combine con el fondo */
+             text-align: center;
+             margin-bottom: 20px;
+             font-size: 1.8em;
+             border-bottom: 2px solid #a2d9ce;
+             padding-bottom: 10px;
+        }
+         .adverbial-phrases-section p {
+            font-size: 1.1em;
+            line-height: 1.7;
+            text-align: center;
+            max-width: 700px; /* Limitar ancho para lectura */
+            margin: 0 auto 20px auto; /* Centrar párrafo */
+         }
+        .adverbial-phrases-section ul {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+        }
+        .adverbial-phrases-section li {
+            background-color: #fff;
+            padding: 8px 15px;
+            border-radius: 20px; /* Estilo píldora */
+            font-weight: 600;
+            color: #1abc9c;
+            border: 1px solid #a2d9ce;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+
+        .final-note {
+            background-color: #fef5e7; /* Fondo crema suave */
+            color: #d35400; /* Naranja oscuro */
+            padding: 25px 35px;
+            margin: 30px;
+            border-radius: 8px;
+            border-left: 5px solid #f39c12; /* Borde naranja */
+            font-style: normal; /* Quitar cursiva por defecto */
+            text-align: left;
+        }
+        .final-note strong { font-weight: 700; }
+
+        /* Media Query */
+        @media (max-width: 768px) {
+            body { padding: 15px 10px; }
+            .presentation-container { max-width: 100%; margin: 10px 0; }
+            header { padding: 20px 25px; }
+            header h1 { font-size: 1.9em; }
+            .intro { padding: 20px 25px; font-size: 1em; }
+            .adverb-grid { padding: 25px; gap: 20px; grid-template-columns: 1fr; }
+            .adverb-card { padding: 20px; }
+            .adverb-card h2 { font-size: 1.4em; }
+            .adverbial-phrases-section { padding: 25px; }
+            .adverbial-phrases-section h2 { font-size: 1.6em; }
+             .adverbial-phrases-section p { font-size: 1em; }
+            .final-note { margin: 20px; padding: 20px 25px; }
+        }
+
+    </style>
+</head>
+<body>
+    <div class="presentation-container">
+        <header>
+            <h1>Los Adverbios: Guía Completa</h1>
+        </header>
+
+        <div class="intro">
+            <p>El <strong>adverbio</strong> es una palabra (o grupo de palabras) que aporta información extra, modificando principalmente a:</p>
+            <ul>
+                <li><strong>Verbos:</strong> Dice <em>cómo, cuándo, dónde, cuánto...</em> se hace la acción (Ej: Corre <code>rápidamente</code>).</li>
+                <li><strong>Adjetivos:</strong> Intensifica o matiza una cualidad (Ej: Es <code>muy</code> alto).</li>
+                <li><strong>Otros adverbios:</strong> Modifica a otro adverbio (Ej: Habla <code>demasiado</code> bajo).</li>
+            </ul>
+             <p><strong>Características clave:</strong> Son generalmente <strong>invariables</strong> (no cambian de género o número) y se diferencian de los adjetivos, que sí concuerdan con el sustantivo al que modifican.</p>
+        </div>
+
+        <div class="adverb-grid">
+            <!-- Tarjeta de Modo -->
+            <div class="adverb-card modo">
+                <h2>Modo</h2>
+                <p><span class="highlight">Concepto Clave:</span> Indican la <strong>manera</strong> o <strong>forma</strong> en que se realiza la acción.</p>
+                <div class="question-block">
+                   <strong>Cómo hallarlo:</strong> Preguntando al verbo <em>¿Cómo?</em>
+                </div>
+                 <p><strong>Nota:</strong> Muchos se forman añadiendo <code>-mente</code> al femenino de un adjetivo (<em>lenta</em> -> <em>lentamente</em>).</p>
+                <span class="example">Ej: Canta <code>bien</code>. Camina <code>despacio</code>. Lo hizo <code>así</code>. Respondió <code>claramente</code>.</span>
+            </div>
+
+            <!-- Tarjeta de Tiempo -->
+            <div class="adverb-card tiempo">
+                <h2>Tiempo</h2>
+                <p><span class="highlight">Concepto Clave:</span> Sitúan la acción en el <strong>tiempo</strong>.</p>
+                <div class="question-block">
+                   <strong>Cómo hallarlo:</strong> Preguntando al verbo <em>¿Cuándo?</em>
+                </div>
+                 <p>Pueden indicar un momento concreto, frecuencia, duración, etc.</p>
+                <span class="example">Ej: Vuelve <code>mañana</code>. <code>Siempre</code> sonríe. Llegó <code>tarde</code>. <code>Aún</code> no ha terminado.</span>
+            </div>
+
+            <!-- Tarjeta de Lugar -->
+            <div class="adverb-card lugar">
+                <h2>Lugar</h2>
+                <p><span class="highlight">Concepto Clave:</span> Señalan la <strong>ubicación</strong> o <strong>dirección</strong> de la acción.</p>
+                 <div class="question-block">
+                   <strong>Cómo hallarlo:</strong> Preguntando al verbo <em>¿Dónde?</em>
+                </div>
+                 <p>Pueden ser de ubicación (aquí, ahí, allí) o de dirección (arriba, abajo, delante).</p>
+                 <span class="example">Ej: El libro está <code>aquí</code>. Vive <code>lejos</code>. Mira <code>arriba</code>. Ven <code>acá</code>.</span>
+            </div>
+
+            <!-- Tarjeta de Cantidad -->
+            <div class="adverb-card cantidad">
+                <h2>Cantidad / Grado</h2>
+                <p><span class="highlight">Concepto Clave:</span> Expresan <strong>intensidad, grado</strong> o <strong>cantidad</strong>.</p>
+                 <div class="question-block">
+                   <strong>Cómo hallarlo:</strong> Preguntando <em>¿Cuánto?</em> (al verbo) o <em>¿Cuán?</em> (a adjetivos/adverbios).
+                </div>
+                <p>Modifican verbos (<em>Come <code>mucho</code></em>), adjetivos (<em>Es <code>muy</code> inteligente</em>) y otros adverbios (<em>Habla <code>bastante</code> rápido</em>).</p>
+                 <span class="example">Ej: Comió <code>poco</code>. Estoy <code>muy</code> feliz. Es <code>más</code> alto. Corrió <code>bastante</code>.</span>
+            </div>
+
+            <!-- Tarjeta de Afirmación -->
+            <div class="adverb-card afirmacion">
+                <h2>Afirmación</h2>
+                <p><span class="highlight">Concepto Clave:</span> Sirven para <strong>confirmar</strong> o expresar <strong>certeza</strong>.</p>
+                 <div class="question-block">
+                   <strong>Cómo hallarlo:</strong> Identifícalos por su <strong>función de afirmar</strong> o dar por cierto lo que se dice. No responden a preguntas de circunstancia.
+                </div>
+                 <p>A menudo refuerzan la idea expresada.</p>
+                 <span class="example">Ej: <code>Sí</code>, iré. <code>También</code> lo pienso. <code>Claro</code> que puedes. <code>Efectivamente</code>, es correcto.</span>
+            </div>
+
+            <!-- Tarjeta de Negación -->
+            <div class="adverb-card negacion">
+                <h2>Negación</h2>
+                <p><span class="highlight">Concepto Clave:</span> Sirven para <strong>negar</strong> la acción o expresar <strong>disconformidad</strong>.</p>
+                <div class="question-block">
+                   <strong>Cómo hallarlo:</strong> Identifícalos por su <strong>función de negar</strong>. Son el opuesto a la afirmación.
+                </div>
+                 <p><code>Nunca</code> y <code>jamás</code> tienen un sentido más enfático que <code>no</code>.</p>
+                 <span class="example">Ej: <code>No</code> tengo frío. <code>Nunca</code> miente. <code>Tampoco</code> quiso venir. <code>Jamás</code> lo olvidará.</span>
+            </div>
+
+            <!-- Tarjeta de Duda -->
+            <div class="adverb-card duda">
+                <h2>Duda</h2>
+                <p><span class="highlight">Concepto Clave:</span> Expresan <strong>incertidumbre, posibilidad</strong> o <strong>probabilidad</strong>.</p>
+                 <div class="question-block">
+                   <strong>Cómo hallarlo:</strong> Identifícalos por su <strong>función de expresar duda</strong> o falta de certeza sobre lo que se dice.
+                </div>
+                 <p>Indican que el hablante no está seguro.</p>
+                 <span class="example">Ej: <code>Quizás</code> llueva. <code>Tal vez</code> sea verdad. <code>Posiblemente</code> lleguen tarde. <code>Acaso</code> no te avisé.</span>
+            </div>
+        </div>
+
+        <!-- Sección de Locuciones Adverbiales -->
+        <div class="adverbial-phrases-section">
+            <h2>Locuciones Adverbiales</h2>
+            <p>¡Ojo! A veces, un <strong>grupo de palabras</strong> funciona junto como si fuera un solo adverbio. A esto se le llama <strong>Locución Adverbial</strong>.</p>
+             <ul>
+                <li>a menudo (= frecuentemente)</li>
+                <li>de repente (= repentinamente)</li>
+                <li>sin duda (= ciertamente)</li>
+                <li>tal vez (= quizá)</li>
+                <li>a ciegas</li>
+                <li>en realidad</li>
+                <li>por supuesto</li>
+                <li>poco a poco</li>
+                <li>de vez en cuando</li>
+                <li>al instante</li>
+                <li>con frecuencia</li>
+                <li>en resumen</li>
+            </ul>
+            <p style="font-size:0.9em; margin-top:20px;">(Estas locuciones encajan en los tipos anteriores: <em>a menudo</em> es de tiempo/frecuencia, <em>sin duda</em> es de afirmación, <em>tal vez</em> es de duda, <em>poco a poco</em> es de modo...)</p>
+        </div>
+
+
+        <div class="final-note">
+            <p><strong>En Resumen:</strong></p>
+            <ul>
+                <li>Los adverbios añaden detalles cruciales a las oraciones.</li>
+                <li>Las preguntas <strong>¿Cómo? ¿Cuándo? ¿Dónde? ¿Cuánto?</strong> son muy útiles para identificar los adverbios de modo, tiempo, lugar y cantidad.</li>
+                <li>Los de afirmación, negación y duda se reconocen por su <strong>función</strong> de confirmar, negar o expresar incertidumbre.</li>
+                <li>No olvides las <strong>locuciones adverbiales</strong>, ¡grupos de palabras que actúan como un solo adverbio!</li>
+                <li>La <strong>posición</strong> del adverbio puede variar, pero a menudo va cerca de la palabra que modifica.</li>
+            </ul>
+        </div>
+
+    </div>
+</body>
+</html>
